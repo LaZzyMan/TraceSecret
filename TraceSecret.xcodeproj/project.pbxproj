@@ -8,20 +8,70 @@
 
 /* Begin PBXBuildFile section */
 		0A1159AB204E86FB00236399 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1159AA204E86FB00236399 /* AppDelegate.swift */; };
-		0A1159AD204E86FB00236399 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1159AC204E86FB00236399 /* ViewController.swift */; };
 		0A1159B0204E86FB00236399 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A1159AE204E86FB00236399 /* Main.storyboard */; };
 		0A1159B2204E86FB00236399 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A1159B1204E86FB00236399 /* Assets.xcassets */; };
 		0A1159B5204E86FB00236399 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A1159B3204E86FB00236399 /* LaunchScreen.storyboard */; };
+		0A1159BD204E8B9E00236399 /* BaiduTraceSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A1159BC204E8B9E00236399 /* BaiduTraceSDK.framework */; };
+		0A1159BE204E8B9E00236399 /* BaiduTraceSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0A1159BC204E8B9E00236399 /* BaiduTraceSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0A1159C8204E8DE500236399 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A1159C6204E8DD900236399 /* libcrypto.a */; };
+		0A1159C9204E8DE500236399 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A1159C7204E8DD900236399 /* libssl.a */; };
+		0A1159DA204EBE9A00236399 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A1159D3204EBE9A00236399 /* Info.plist */; };
+		0A1159E520528C0400236399 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1159E420528C0400236399 /* LoginViewController.swift */; };
+		0A1159E720528C1900236399 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1159E620528C1900236399 /* RegisterViewController.swift */; };
+		0A1159E920528C2700236399 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1159E820528C2700236399 /* MapViewController.swift */; };
+		0A1159EB20528C3400236399 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1159EA20528C3400236399 /* SettingViewController.swift */; };
+		0A1159ED20528C4400236399 /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1159EC20528C4300236399 /* PersonalViewController.swift */; };
+		0A1159EF20528DA500236399 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1159EE20528DA500236399 /* TabBarViewController.swift */; };
+		0A1159F120528E0600236399 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1159F020528E0600236399 /* User.swift */; };
+		0A1159F320528E2C00236399 /* POI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1159F220528E2C00236399 /* POI.swift */; };
+		0A1159F520528E8100236399 /* CustomSeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1159F420528E8100236399 /* CustomSeting.swift */; };
+		0A1159F720529B4C00236399 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1159F620529B4C00236399 /* Record.swift */; };
+		0A1159F920529B5E00236399 /* Trace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1159F820529B5E00236399 /* Trace.swift */; };
+		0A1159FB2052C26700236399 /* IdentityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1159FA2052C26700236399 /* IdentityViewController.swift */; };
+		6214FDDFEB9CCC88DE7239F2 /* libPods-TraceSecret.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA4D6F822E85F85C510609 /* libPods-TraceSecret.a */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0A1159BF204E8B9E00236399 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0A1159BE204E8B9E00236399 /* BaiduTraceSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		08EA4D6F822E85F85C510609 /* libPods-TraceSecret.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TraceSecret.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A1159A7204E86FA00236399 /* TraceSecret.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TraceSecret.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A1159AA204E86FB00236399 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0A1159AC204E86FB00236399 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0A1159AF204E86FB00236399 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0A1159B1204E86FB00236399 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A1159B4204E86FB00236399 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		0A1159B6204E86FB00236399 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0A1159BC204E8B9E00236399 /* BaiduTraceSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduTraceSDK.framework; sourceTree = "<group>"; };
+		0A1159C2204E8C0C00236399 /* TraceSecret-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TraceSecret-Bridging-Header.h"; sourceTree = "<group>"; };
+		0A1159C6204E8DD900236399 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
+		0A1159C7204E8DD900236399 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
+		0A1159D3204EBE9A00236399 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0A1159E320502C8600236399 /* FZQKBYSJW.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = FZQKBYSJW.TTF; path = "../../../../../../Volumes/VMware Shared Folders/host files/FZQKBYSJW.TTF"; sourceTree = "<group>"; };
+		0A1159E420528C0400236399 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0A1159E620528C1900236399 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		0A1159E820528C2700236399 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		0A1159EA20528C3400236399 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		0A1159EC20528C4300236399 /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
+		0A1159EE20528DA500236399 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		0A1159F020528E0600236399 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0A1159F220528E2C00236399 /* POI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POI.swift; sourceTree = "<group>"; };
+		0A1159F420528E8100236399 /* CustomSeting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSeting.swift; sourceTree = "<group>"; };
+		0A1159F620529B4C00236399 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		0A1159F820529B5E00236399 /* Trace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trace.swift; sourceTree = "<group>"; };
+		0A1159FA2052C26700236399 /* IdentityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityViewController.swift; sourceTree = "<group>"; };
+		12F60D1FC96B045E7E1BE955 /* Pods-TraceSecret.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TraceSecret.release.xcconfig"; path = "Pods/Target Support Files/Pods-TraceSecret/Pods-TraceSecret.release.xcconfig"; sourceTree = "<group>"; };
+		E04BD2D12EBBC62032780F9C /* Pods-TraceSecret.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TraceSecret.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TraceSecret/Pods-TraceSecret.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +79,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A1159C8204E8DE500236399 /* libcrypto.a in Frameworks */,
+				0A1159C9204E8DE500236399 /* libssl.a in Frameworks */,
+				6214FDDFEB9CCC88DE7239F2 /* libPods-TraceSecret.a in Frameworks */,
+				0A1159BD204E8B9E00236399 /* BaiduTraceSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,8 +92,11 @@
 		0A11599E204E86FA00236399 = {
 			isa = PBXGroup;
 			children = (
+				0A1159BC204E8B9E00236399 /* BaiduTraceSDK.framework */,
 				0A1159A9204E86FB00236399 /* TraceSecret */,
 				0A1159A8204E86FA00236399 /* Products */,
+				EB93E9664040948257D91871 /* Pods */,
+				3ED97C89F4C3D6D5A7B8B491 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +111,86 @@
 		0A1159A9204E86FB00236399 /* TraceSecret */ = {
 			isa = PBXGroup;
 			children = (
-				0A1159AA204E86FB00236399 /* AppDelegate.swift */,
-				0A1159AC204E86FB00236399 /* ViewController.swift */,
-				0A1159AE204E86FB00236399 /* Main.storyboard */,
-				0A1159B1204E86FB00236399 /* Assets.xcassets */,
-				0A1159B3204E86FB00236399 /* LaunchScreen.storyboard */,
-				0A1159B6204E86FB00236399 /* Info.plist */,
+				0A1159E120502BEE00236399 /* Main */,
+				0A1159E020502BE500236399 /* Resource */,
+				0A1159DE20502BC300236399 /* Model */,
+				0A1159DD20502BB500236399 /* View */,
 			);
 			path = TraceSecret;
+			sourceTree = "<group>";
+		};
+		0A1159C5204E8DD900236399 /* thirdlibs */ = {
+			isa = PBXGroup;
+			children = (
+				0A1159C6204E8DD900236399 /* libcrypto.a */,
+				0A1159C7204E8DD900236399 /* libssl.a */,
+			);
+			path = thirdlibs;
+			sourceTree = "<group>";
+		};
+		0A1159DD20502BB500236399 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0A1159E420528C0400236399 /* LoginViewController.swift */,
+				0A1159E620528C1900236399 /* RegisterViewController.swift */,
+				0A1159E820528C2700236399 /* MapViewController.swift */,
+				0A1159EA20528C3400236399 /* SettingViewController.swift */,
+				0A1159EC20528C4300236399 /* PersonalViewController.swift */,
+				0A1159EE20528DA500236399 /* TabBarViewController.swift */,
+				0A1159FA2052C26700236399 /* IdentityViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0A1159DE20502BC300236399 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0A1159F020528E0600236399 /* User.swift */,
+				0A1159F220528E2C00236399 /* POI.swift */,
+				0A1159F420528E8100236399 /* CustomSeting.swift */,
+				0A1159F620529B4C00236399 /* Record.swift */,
+				0A1159F820529B5E00236399 /* Trace.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0A1159E020502BE500236399 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				0A1159E320502C8600236399 /* FZQKBYSJW.TTF */,
+				0A1159B1204E86FB00236399 /* Assets.xcassets */,
+				0A1159D3204EBE9A00236399 /* Info.plist */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		0A1159E120502BEE00236399 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				0A1159B3204E86FB00236399 /* LaunchScreen.storyboard */,
+				0A1159AE204E86FB00236399 /* Main.storyboard */,
+				0A1159AA204E86FB00236399 /* AppDelegate.swift */,
+				0A1159C2204E8C0C00236399 /* TraceSecret-Bridging-Header.h */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		3ED97C89F4C3D6D5A7B8B491 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0A1159C5204E8DD900236399 /* thirdlibs */,
+				08EA4D6F822E85F85C510609 /* libPods-TraceSecret.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EB93E9664040948257D91871 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E04BD2D12EBBC62032780F9C /* Pods-TraceSecret.debug.xcconfig */,
+				12F60D1FC96B045E7E1BE955 /* Pods-TraceSecret.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +200,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0A1159B9204E86FB00236399 /* Build configuration list for PBXNativeTarget "TraceSecret" */;
 			buildPhases = (
+				0672556FB34E9E3299FBCB24 /* [CP] Check Pods Manifest.lock */,
 				0A1159A3204E86FA00236399 /* Sources */,
 				0A1159A4204E86FA00236399 /* Frameworks */,
 				0A1159A5204E86FA00236399 /* Resources */,
+				C327D7398961AFE6DF7A9812 /* [CP] Embed Pods Frameworks */,
+				1E526F6FD542A4DC834BF1BE /* [CP] Copy Pods Resources */,
+				0A1159BF204E8B9E00236399 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -96,7 +229,13 @@
 				TargetAttributes = {
 					0A1159A6204E86FA00236399 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -126,18 +265,84 @@
 				0A1159B5204E86FB00236399 /* LaunchScreen.storyboard in Resources */,
 				0A1159B2204E86FB00236399 /* Assets.xcassets in Resources */,
 				0A1159B0204E86FB00236399 /* Main.storyboard in Resources */,
+				0A1159DA204EBE9A00236399 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0672556FB34E9E3299FBCB24 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TraceSecret-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1E526F6FD542A4DC834BF1BE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TraceSecret/Pods-TraceSecret-resources.sh",
+				"${PODS_ROOT}/BaiduMapKit/BaiduMapKit/BaiduMapAPI_Map.framework/Resources/mapapi.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TraceSecret/Pods-TraceSecret-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C327D7398961AFE6DF7A9812 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TraceSecret/Pods-TraceSecret-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0A1159A3204E86FA00236399 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A1159AD204E86FB00236399 /* ViewController.swift in Sources */,
+				0A1159EB20528C3400236399 /* SettingViewController.swift in Sources */,
+				0A1159F320528E2C00236399 /* POI.swift in Sources */,
+				0A1159F520528E8100236399 /* CustomSeting.swift in Sources */,
+				0A1159E720528C1900236399 /* RegisterViewController.swift in Sources */,
+				0A1159E520528C0400236399 /* LoginViewController.swift in Sources */,
+				0A1159F920529B5E00236399 /* Trace.swift in Sources */,
 				0A1159AB204E86FB00236399 /* AppDelegate.swift in Sources */,
+				0A1159F720529B4C00236399 /* Record.swift in Sources */,
+				0A1159F120528E0600236399 /* User.swift in Sources */,
+				0A1159EF20528DA500236399 /* TabBarViewController.swift in Sources */,
+				0A1159ED20528C4400236399 /* PersonalViewController.swift in Sources */,
+				0A1159E920528C2700236399 /* MapViewController.swift in Sources */,
+				0A1159FB2052C26700236399 /* IdentityViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,31 +477,68 @@
 		};
 		0A1159BA204E86FB00236399 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E04BD2D12EBBC62032780F9C /* Pods-TraceSecret.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 35CAMRVQPE;
-				INFOPLIST_FILE = TraceSecret/Info.plist;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/BaiduMapKit\"",
+					"\"$(SRCROOT)/BaiduTraceSDK.framework/Headers\"",
+				);
+				INFOPLIST_FILE = TraceSecret/Resource/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/thirdlibs",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = zz.TraceSecret;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TraceSecret/Main/TraceSecret-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		0A1159BB204E86FB00236399 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 12F60D1FC96B045E7E1BE955 /* Pods-TraceSecret.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 35CAMRVQPE;
-				INFOPLIST_FILE = TraceSecret/Info.plist;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/BaiduMapKit\"",
+					"\"$(SRCROOT)/BaiduTraceSDK.framework/Headers\"",
+				);
+				INFOPLIST_FILE = TraceSecret/Resource/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/thirdlibs",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = zz.TraceSecret;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TraceSecret/Main/TraceSecret-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -9,13 +9,23 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, BMKGeneralDelegate {
 
     var window: UIWindow?
+    var _manager:BMKMapManager?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        //初始化地图服务
+        _manager = BMKMapManager()
+        let result = _manager?.start("rIso3DUFDBBG0d2QQXsnub1DAd8BwGdy", generalDelegate: self)
+        if result == false{
+            NSLog("地图服务注册失败!")
+        }
+        //初始化轨迹服务
+        let sop:BTKServiceOption = BTKServiceOption(ak: "rIso3DUFDBBG0d2QQXsnub1DAd8BwGdy", mcode: "zz.TraceSecret", serviceID: 150540, keepAlive: true)
+        BTKAction.sharedInstance().initInfo(sop)
         return true
     }
 
