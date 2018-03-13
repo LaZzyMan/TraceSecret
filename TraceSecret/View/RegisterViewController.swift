@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UserDelegate {
 
     @IBOutlet weak var emailView: UIView!
     @IBOutlet weak var usernameView: UIView!
@@ -30,6 +30,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
         finishView.center.x += self.view.bounds.width*2
         // 初始化
         newUser = User()
+        newUser?.delegate = self
         emailTextField.delegate = self
         usernameTextField.delegate = self
         passwordTextField.delegate = self
@@ -40,7 +41,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
         headImage.layer.masksToBounds = true
         headImage.layer.cornerRadius = headImage.bounds.width/2
         headImage.layer.borderWidth = 2
-        headImage.layer.borderColor = UIColor.blue.cgColor
+        headImage.layer.borderColor = UIColor.gray.cgColor
     }
 
     override func didReceiveMemoryWarning() {
@@ -78,14 +79,12 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
         // 向服务器完成注册
         DispatchQueue.main.async {
             self.newUser?.register()
-            self.waitProgressBar.stopAnimating()
-            self.finishLabel.isHidden = false
-            self.finishBtn.isHidden = false
         }
     }
     @IBAction func finish(_ sender: Any) {
-        newUser?.login()
-        self.performSegue(withIdentifier: "registerFinished", sender: self)
+        DispatchQueue.main.async {
+            self.newUser?.login()
+        }
     }
     // prepare
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -97,6 +96,19 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
             }
         }else{
             NSLog("错误的identifier")
+        }
+    }
+    // User Delegate
+    func registerFinishedWithresultof(state: Int) {
+        if state == 1{
+            self.waitProgressBar.stopAnimating()
+            self.finishLabel.isHidden = false
+            self.finishBtn.isHidden = false
+        }
+    }
+    func loginFinishedWithResultof(state: Int) {
+        if state == 1{
+            self.performSegue(withIdentifier: "registerFinished", sender: self)
         }
     }
     // textField Delegate

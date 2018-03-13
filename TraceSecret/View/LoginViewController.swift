@@ -8,8 +8,9 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: UIViewController, UITextFieldDelegate, UserDelegate {
 
+    @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var waitLabel: UIActivityIndicatorView!
@@ -18,34 +19,47 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        // 初始化
+        user = User()
+        user?.delegate = self
+        passwordTextField.isSecureTextEntry = true
         // 检查用户历史登录信息
         if let username = UserDefaults.standard.string(forKey: "username"){
             // 存在默认信息则直接登录
             let password = UserDefaults.standard.string(forKey: "password")
-            user = User()
             user?.username = username
             user?.password = password
+            user?.state = "密码已变更"
             DispatchQueue.main.async {
                 self.user?.login()
-                if (self.user?.isLogined)!{
-                    self.performSegue(withIdentifier: "login", sender: self)
-                }else{
-                    // 提示密码已被修改，要求重新登录
-                    NSLog("密码已更改")
-                }
             }
         }
+        // 添加键盘信息监听
+        NotificationCenter.default.addObserver(forName: Notification.Name.UIKeyboardWillShow, object: nil, queue: nil, using: keyboardWillChange(_:))
+        NotificationCenter.default.addObserver(forName: Notification.Name.UIKeyboardWillHide, object: nil, queue: nil, using: keyboardWillChange(_:))
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    // TextField Delegate
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
+    
+    // keyboard delegate
+    func keyboardWillChange(_ note:Notification){
+        /*
+        let duration:Double = note.userInfo![UIKeyboardAnimationDurationUserInfoKey] as! Double
+        if note.name == .UIKeyboardWillShow{
+            UIView.animate(withDuration: duration, animations: {
+                self.view.frame.origin.y = -220
+            })
+        }else{
+            UIView.animate(withDuration: duration, animations: {
+                self.view.frame.origin.y = 0
+            })
+        }
+ */
     }
+ 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         usernameTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
@@ -55,20 +69,26 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.waitLabel.startAnimating()
         let username = self.usernameTextField.text
         let password = self.passwordTextField.text
-        self.user = User()
         user?.username = username
         user?.password = password
         DispatchQueue.main.async {
             self.user?.login()
-            if (self.user?.isLogined)!{
-                self.waitLabel.stopAnimating()
-                self.performSegue(withIdentifier: "login", sender: self)
-            }
         }
     }
     
     @IBAction func onRegisterBtnClick(_ sender: Any) {
         self.performSegue(withIdentifier: "register", sender: self)
+    }
+    // User Delegate
+    func loginFinishedWithResultof(state: Int) {
+        self.waitLabel.stopAnimating()
+        if state == 1{
+            self.performSegue(withIdentifier: "login", sender: self)
+        }else{
+            self.errorLabel.text = self.user?.state
+            self.errorLabel.isHidden = false
+            self.passwordTextField.text = ""
+        }
     }
     // prepare
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

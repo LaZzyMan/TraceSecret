@@ -90,7 +90,7 @@
                                     <action selector="onLoginBtnClicked:" destination="nJG-cx-wa5" eventType="touchUpInside" id="Qm4-fl-B7a"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQg-dp-q9F">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQg-dp-q9F">
                                 <rect key="frame" x="24" y="392" width="68" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="FZQKBYSJW--GB1-0" family="FZQingKeBenYueSongS-R-GB" pointSize="12"/>
@@ -101,12 +101,20 @@
                                     <action selector="onRegisterBtnClick:" destination="nJG-cx-wa5" eventType="touchUpInside" id="aur-hm-cnR"/>
                                 </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="错误提示" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cWd-z0-rgI">
+                                <rect key="frame" x="24" y="443" width="101" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="FZQKBYSJW--GB1-0" family="FZQingKeBenYueSongS-R-GB" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="fgI-Jj-4Kx"/>
                     </view>
                     <navigationItem key="navigationItem" title="登录" id="5NJ-fA-qgg"/>
                     <connections>
+                        <outlet property="errorLabel" destination="cWd-z0-rgI" id="Pw7-2a-8Ov"/>
                         <outlet property="passwordTextField" destination="Lzs-3c-Gfi" id="5i4-dL-oPr"/>
                         <outlet property="usernameTextField" destination="1e8-j0-orT" id="xTd-KA-nl0"/>
                         <outlet property="waitLabel" destination="Fl3-T4-hEo" id="Tvi-ag-hA2"/>
@@ -117,7 +125,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6oq-Pr-AVN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1598" y="96"/>
+            <point key="canvasLocation" x="-1599.2" y="95.802098950524751"/>
         </scene>
         <!--身份验证-->
         <scene sceneID="A8j-Tl-84W">
@@ -262,6 +270,7 @@
                     <navigationItem key="navigationItem" title="今日足迹" id="8DY-Wn-AOl"/>
                     <connections>
                         <outlet property="mapView" destination="yRU-xl-jv5" id="VUE-mt-6QN"/>
+                        <outlet property="waitProgressBar" destination="LrY-1t-B41" id="3hR-Fh-8TS"/>
                         <outlet property="waitView" destination="FUM-jQ-xvr" id="vQ1-rc-lnl"/>
                     </connections>
                 </viewController>
@@ -438,7 +447,7 @@
                         <outlet property="usernameTextField" destination="jmA-LV-Yod" id="Dpu-CR-2hg"/>
                         <outlet property="usernameView" destination="8p6-ZV-iSd" id="0aV-82-Tbk"/>
                         <outlet property="waitProgressBar" destination="Cpp-me-oJ7" id="wsa-lF-pKw"/>
-                        <segue destination="1N5-Cn-Iro" kind="presentation" id="yyn-zE-uXU"/>
+                        <segue destination="1N5-Cn-Iro" kind="presentation" identifier="registerFinished" id="yyn-zE-uXU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KAY-LG-X6u" userLabel="First Responder" sceneMemberID="firstResponder"/>

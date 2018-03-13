@@ -28,6 +28,9 @@
 		0A1159F720529B4C00236399 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1159F620529B4C00236399 /* Record.swift */; };
 		0A1159F920529B5E00236399 /* Trace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1159F820529B5E00236399 /* Trace.swift */; };
 		0A1159FB2052C26700236399 /* IdentityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1159FA2052C26700236399 /* IdentityViewController.swift */; };
+		0A76F02C205510FF0099D76E /* mapConfig in Resources */ = {isa = PBXBuildFile; fileRef = 0A76F02B205510FE0099D76E /* mapConfig */; };
+		0A76F02E205524730099D76E /* mapConfigBlack in Resources */ = {isa = PBXBuildFile; fileRef = 0A76F02D205524730099D76E /* mapConfigBlack */; };
+		0A76F02F205532F40099D76E /* FZQKBYSJW.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 0A1159E320502C8600236399 /* FZQKBYSJW.TTF */; };
 		6214FDDFEB9CCC88DE7239F2 /* libPods-TraceSecret.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA4D6F822E85F85C510609 /* libPods-TraceSecret.a */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +73,8 @@
 		0A1159F620529B4C00236399 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		0A1159F820529B5E00236399 /* Trace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trace.swift; sourceTree = "<group>"; };
 		0A1159FA2052C26700236399 /* IdentityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityViewController.swift; sourceTree = "<group>"; };
+		0A76F02B205510FE0099D76E /* mapConfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mapConfig; path = ../../../EatWhich/EatWhich/view/mapConfig; sourceTree = "<group>"; };
+		0A76F02D205524730099D76E /* mapConfigBlack */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mapConfigBlack; path = ../../../../Downloads/BaiduMap_IOSSDK_v3.4.4_Sample/BMKSwiftDemo/BMKSwiftDemo/mapConfigBlack; sourceTree = "<group>"; };
 		12F60D1FC96B045E7E1BE955 /* Pods-TraceSecret.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TraceSecret.release.xcconfig"; path = "Pods/Target Support Files/Pods-TraceSecret/Pods-TraceSecret.release.xcconfig"; sourceTree = "<group>"; };
 		E04BD2D12EBBC62032780F9C /* Pods-TraceSecret.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TraceSecret.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TraceSecret/Pods-TraceSecret.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -157,6 +162,8 @@
 		0A1159E020502BE500236399 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				0A76F02D205524730099D76E /* mapConfigBlack */,
+				0A76F02B205510FE0099D76E /* mapConfig */,
 				0A1159E320502C8600236399 /* FZQKBYSJW.TTF */,
 				0A1159B1204E86FB00236399 /* Assets.xcassets */,
 				0A1159D3204EBE9A00236399 /* Info.plist */,
@@ -262,9 +269,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A76F02F205532F40099D76E /* FZQKBYSJW.TTF in Resources */,
 				0A1159B5204E86FB00236399 /* LaunchScreen.storyboard in Resources */,
 				0A1159B2204E86FB00236399 /* Assets.xcassets in Resources */,
+				0A76F02E205524730099D76E /* mapConfigBlack in Resources */,
 				0A1159B0204E86FB00236399 /* Main.storyboard in Resources */,
+				0A76F02C205510FF0099D76E /* mapConfig in Resources */,
 				0A1159DA204EBE9A00236399 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

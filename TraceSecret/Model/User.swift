@@ -8,14 +8,19 @@
 
 import UIKit
 
-class User: NSObject, BTKTraceDelegate {
+@objc protocol UserDelegate : class{
+    @objc optional func loginFinishedWithResultof(state:Int)->Void
+    @objc optional func registerFinishedWithresultof(state:Int)->Void
+    
+}
+
+class User: NSObject, BTKTraceDelegate, BTKTrackDelegate {
+    weak var delegate: UserDelegate!
     var username:String!
     var password:String!
     var id:String!
     var email:String!
     var headImage:UIImage!
-    var isRegistered:Bool!
-    var isLogined:Bool!
     var isVertified:Bool!
     var registerTime:Date?
     var todayTrace:Trace?
@@ -32,17 +37,15 @@ class User: NSObject, BTKTraceDelegate {
         email = ""
         headImage = UIImage()
         id = UIDevice.current.identifierForVendor?.uuidString
-        isRegistered = false
         isVertified = false
-        isLogined = false
-        serviceURL = "http://10.127.135.254:8080"
+        serviceURL = "http://47.94.208.122/api/v1.0"
     }
     public func login(){
         let headers = [
-            "authorization": "Basic eGp5OjIwMTcwNzI0",
             "content-type": "application/json",
+            "authorization": "Basic eno6MjAxODAzMTI=",
             "cache-control": "no-cache",
-            "postman-token": "ee43bdf3-ee2a-7154-7594-1a0a63de0eb1"
+            "postman-token": "0b343b6d-e26f-6f69-53a9-48beafa6eef2"
         ]
         let parameters = [
             "username": username,
@@ -51,7 +54,8 @@ class User: NSObject, BTKTraceDelegate {
         
         do{
             let postData = try JSONSerialization.data(withJSONObject: parameters, options: [])
-            let request = NSMutableURLRequest(url: NSURL(string: "\(serviceURL)/login")! as URL,
+            let url = URL(string: "http://47.94.208.122/api/v1.0/login")
+            let request = NSMutableURLRequest(url: url!,
                                               cachePolicy: .useProtocolCachePolicy,
                                               timeoutInterval: 10.0)
             request.httpMethod = "PUT"
@@ -62,30 +66,36 @@ class User: NSObject, BTKTraceDelegate {
                 if (error != nil) {
                     NSLog(error.debugDescription)
                     self.state = "网络错误"
+                    self.delegate.loginFinishedWithResultof!(state: 0)
                 } else {
-                    let json = try?JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as AnyObject
-                    let status = json?.object(forKey: "result") as! String
-                    if status != "True"{
+                    let json = try?JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as! [String: Any]
+                    let status = json!["state"] as! Int
+                    if status == 2{
                         self.state = "用户名或密码错误！"
-                    }else{
+                        self.delegate.loginFinishedWithResultof!(state: 0)
+                    }else if status == 0{
                         // 登录成功
-                        self.isLogined = true
-                        self.state = "ok"
+                        self.state = "登录成功！"
                         // 设置默认登录信息
                         let userDefault = UserDefaults.standard
                         userDefault.set(self.username, forKey: "username")
                         userDefault.set(self.password, forKey: "password")
                         // 解析用户信息
                         self.downImage()
-                        self.id = json?.object(forKey:"id") as! String
-                        self.email = json?.object(forKey: "email") as! String
+                        let result = json!["result"] as! [String: String]
+                        self.id = result["id"]
+                        self.email = result["email"]
                         let dateFormatter = DateFormatter()
                         dateFormatter.dateFormat = "yyyy-MM-dd"
-                        self.registerTime = dateFormatter.date(from: json?.object(forKey: "registerTime") as! String)
+                        self.registerTime = dateFormatter.date(from: result["registerTime"]!)
                         // 开启轨迹采集
                         let bts:BTKStartServiceOption = BTKStartServiceOption.init(entityName: self.id)
                         BTKAction.sharedInstance().startService(bts, delegate: self)
                         BTKAction.sharedInstance().startGather(self)
+                        self.delegate.loginFinishedWithResultof!(state: 1)
+                    }else if status == 1{
+                        self.state = "用户不存在！"
+                        self.delegate.loginFinishedWithResultof!(state: 0)
                     }
                 }
             })
@@ -94,27 +104,29 @@ class User: NSObject, BTKTraceDelegate {
         catch let error{
             NSLog("JSON失败\(error)")
             self.state = "网络错误"
+            self.delegate.loginFinishedWithResultof!(state: 0)
         }
     }
     public func register(){
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-dd"
         let headers = [
-            "authorization": "Basic eGp5OjIwMTcwNzI0",
             "content-type": "application/json",
+            "authorization": "Basic eno6MjAxODAzMTI=",
             "cache-control": "no-cache",
-            "postman-token": "ee43bdf3-ee2a-7154-7594-1a0a63de0eb1"
+            "postman-token": "0b343b6d-e26f-6f69-53a9-48beafa6eef2"
         ]
         let parameters = [
             "username": username,
             "password": password,
+            "id": id,
             "email": email!,
             "registerTime": dateFormatter.string(from: Date())
             ] as [String : Any]
         
         do{
             let postData = try JSONSerialization.data(withJSONObject: parameters, options: [])
-            let request = NSMutableURLRequest(url: NSURL(string: "\(serviceURL)/register")! as URL,
+            let request = NSMutableURLRequest(url: NSURL(string: "http://47.94.208.122/api/v1.0/register")! as URL,
                                               cachePolicy: .useProtocolCachePolicy,
                                               timeoutInterval: 10.0)
             request.httpMethod = "PUT"
@@ -125,19 +137,19 @@ class User: NSObject, BTKTraceDelegate {
                 if (error != nil) {
                     NSLog(error.debugDescription)
                     self.state = "网络错误"
+                    self.delegate.registerFinishedWithresultof!(state: 0)
                 } else {
                     let json = try?JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as AnyObject
-                    let status = json?.object(forKey: "result") as! String
-                    if status != "True"{
-                        self.state = "用户名或密码错误！"
+                    let status = json?.object(forKey: "state") as! Int
+                    if status != 0{
+                        self.state = "用户名已存在！"
+                        self.delegate.registerFinishedWithresultof!(state: 0)
                     }else{
                         // 注册成功
-                        self.isRegistered = true
-                        self.state = "ok"
+                        self.state = "注册成功！"
                         // 上传头像
-                        DispatchQueue.main.async {
-                            self.uploadImage()
-                        }
+                        self.uploadImage()
+                        self.delegate.registerFinishedWithresultof!(state: 1)
                     }
                 }
             })
@@ -146,13 +158,28 @@ class User: NSObject, BTKTraceDelegate {
         catch let error{
             NSLog("JSON失败\(error)")
             self.state = "网络错误"
+            self.delegate.registerFinishedWithresultof!(state: 0)
         }
     }
     public func emailVertify(){
         
     }
     public func getTodayTrace(){
-        
+        let endTime = UInt(Date().timeIntervalSince1970)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let yMdFormatter = DateFormatter()
+        yMdFormatter.dateFormat = "yyyy-MM-dd"
+        let startTime = UInt((dateFormatter.date(from: "\(yMdFormatter.string(from: Date())) 00:00:00")?.timeIntervalSince1970)!)
+        let option = BTKQueryTrackProcessOption()
+        // 去燥/绑路/保留GPS和WIFI点/步行/抽稀
+        option.denoise = true
+        option.mapMatch = true
+        option.radiusThreshold = 0
+        option.transportMode = .TRACK_PROCESS_OPTION_TRANSPORT_MODE_WALKING
+        option.vacuate = true
+        let request = BTKQueryHistoryTrackRequest(entityName: id, startTime: startTime, endTime: endTime, isProcessed: true, processOption: option, supplementMode: .TRACK_PROCESS_OPTION_SUPPLEMENT_MODE_WALKING, outputCoordType: BTKCoordType.COORDTYPE_BD09LL, sortType: BTKTrackSortType.TRACK_SORT_TYPE_ASC, pageIndex: 1, pageSize: 1000, serviceID: 150540, tag: 1)
+        BTKTrackAction.sharedInstance().queryHistoryTrack(with: request, delegate: self)
     }
     public func gethistoryTrace(days:Int){
         
@@ -173,10 +200,14 @@ class User: NSObject, BTKTraceDelegate {
     func onStartGather(_ error: BTKGatherErrorCode) {
         NSLog("开始轨迹采集")
     }
+    // BTKTrack Delegate
+    func onQueryHistoryTrack(_ response: Data!) {
+        
+    }
     // 上传和下载图片
     private func uploadImage(){
         let data=UIImagePNGRepresentation(headImage!)//把图片转成data
-        let uploadurl:String="http://www.sgmy.site/api/v2.0/uploadimage"//设置服务器接收地址
+        let uploadurl:String="http://47.94.208.122/api/v1.0/uploadimage"//设置服务器接收地址
         let request=NSMutableURLRequest(url:URL(string:uploadurl)!)
         request.httpMethod="POST"//设置请求方式
         let boundary:String="-------------------21212222222222222222222"
@@ -185,7 +216,7 @@ class User: NSObject, BTKTraceDelegate {
         let body=NSMutableData()
         //在表单中写入要上传的图片
         body.append(NSString(format:"--\(boundary)\r\n" as NSString).data(using: String.Encoding.utf8.rawValue)!)
-        body.append(NSString(format:"Content-Disposition:form-data;name=\"headimage\";filename=\"\(username).jpg\"\r\n" as NSString).data(using: String.Encoding.utf8.rawValue)!)
+        body.append(NSString(format:"Content-Disposition:form-data;name=\"headimage\";filename=\"\(self.username!).jpg\"\r\n" as NSString).data(using: String.Encoding.utf8.rawValue)!)
         
         //body.appendData(NSString(format:"Content-Type:application/octet-stream\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
         body.append("Content-Type:image/png\r\n\r\n".data(using: String.Encoding.utf8)!)
@@ -207,14 +238,14 @@ class User: NSObject, BTKTraceDelegate {
                 if status == 0{
                     NSLog("Upload Failed")
                     DispatchQueue.main.async(execute: {
-                        self.state = "网络异常"
+                        self.state = "上传失败"
                     })
                 }
             }
         })
     }
     private func downImage(){
-        let url = URL(string: "\(serviceURL)download/"+username+".jpg")!
+        let url = URL(string: "http://47.94.208.122/api/v1.0/download/\(self.username!).jpg")!
         do{
             let data = try Data(contentsOf: url)
             headImage = UIImage(data: data)
